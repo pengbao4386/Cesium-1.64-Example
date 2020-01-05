@@ -12,6 +12,8 @@
     <title>Cesium-1.64版本测试</title>
     <script src="../Build/Cesium/Cesium.js"></script>
     <script src="config.js"></script>
+    <script src="js/ImageryProviderViewHelper.js"></script>
+    <script src="js/GeocoderHelper.js"></script>
 
     <style>
         @import url(../Build/Cesium/Widgets/widgets.css);
@@ -32,6 +34,7 @@
     <div id="cesiumContainer"></div>
     <script>
         var viewer = new Cesium.Viewer('cesiumContainer', {
+            imageryProviderViewModels: ImageryProviderViewObj.ImageryProviderViewArr,
             imageryProvider: new Cesium.WebMapTileServiceImageryProvider(TDT_IMG_Provider)
         });
 
@@ -42,6 +45,7 @@
         // 隐藏cesium版权样式
         viewer._cesiumWidget._creditContainer.style.display = "none";
 
+        GeocoderHelper();
 
 
     </script>

@@ -689,10 +689,12 @@ Either specify options.terrainProvider instead or set options.baseLayerPicker to
         eventHelper.add(dataSourceCollection.dataSourceRemoved, Viewer.prototype._dataSourceRemoved, this);
 
         // Subscribe to left clicks and zoom to the picked object.
+        // 订阅左键单击并缩放到拾取的对象
         function pickAndTrackObject(e) {
             var entity = pickEntity(that, e);
             if (defined(entity)) {
                 //Only track the entity if it has a valid position at the current time.
+                // 仅当实体在当前时间具有有效位置时跟踪该实体
                 if (Property.getValueOrUndefined(entity.position, that.clock.currentTime)) {
                     that.trackedEntity = entity;
                 } else {
