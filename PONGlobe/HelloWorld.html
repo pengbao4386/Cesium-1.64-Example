@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Use correct character set. -->
+    <meta charset="utf-8">
+    <!-- Tell IE to use the latest, best version. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Cesium-1.64版本测试</title>
+    <script src="../Build/Cesium/Cesium.js"></script>
+    <script src="config.js"></script>
+
+    <style>
+        @import url(../Build/Cesium/Widgets/widgets.css);
+        html,
+        body,
+        #cesiumContainer {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="cesiumContainer"></div>
+    <script>
+        var viewer = new Cesium.Viewer('cesiumContainer', {
+            imageryProvider: new Cesium.WebMapTileServiceImageryProvider(TDT_IMG_Provider)
+        });
+
+        // 加载天地图中文标注图层
+        var imageryLayers = viewer.scene.imageryLayers;
+        var tdtAnnoLayer = imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider(TDT_CVA_Provider));
+
+        // 隐藏cesium版权样式
+        viewer._cesiumWidget._creditContainer.style.display = "none";
+
+
+
+    </script>
+
+</body>
+
+<script src="js/AnimationHelper.js"></script>
+</html>
